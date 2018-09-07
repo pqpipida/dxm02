@@ -1,6 +1,7 @@
 package com.myMall.dao;
 
 import com.myMall.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,13 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    int checkUsername(String username);
+    int checkEamil(String email);
+
+    /**
+     * @param username
+     * @param password
+     * @return user
+     */
+    User selectLogin(@Param("username") String username ,@Param("password") String password);
 }
